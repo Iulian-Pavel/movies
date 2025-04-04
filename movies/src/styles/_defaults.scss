@@ -1,0 +1,23 @@
+$fontFallback: sans-serif;
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $fontFallback;
+}
+
+
+@mixin displayFlex($display, $justify-content, $align-items, $flex-direction) {
+    display: $display;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+}
+
+@mixin resetButton {
+    background: none;
+    outline: none;
+    border: none;
+}

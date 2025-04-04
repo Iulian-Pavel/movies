@@ -1,0 +1,49 @@
+@use './defaults';
+
+.navbar {
+    @include defaults.displayFlex(flex, space-around, center, row);
+    border: 1px solid red;
+    .logo {
+        border: 1px solid blue;
+        img {
+            object-fit: cover;
+            width: 4em;
+            height: auto;
+        }
+    }
+    .nav_list {
+        @include defaults.displayFlex(flex, space-around, center, row);
+        width: 30%;
+        border: 1px solid blue;
+        list-style: none;
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+    }
+    .burger_menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navbar {
+        .nav_list{
+            display: none;
+        }
+        .navmenu_icon {
+            display: block;
+            width: 2em;
+            height: auto;
+        }
+    }
+    .navbar_responsive {
+        flex-direction: column;
+        height: 100vh;
+        .nav_list {
+            display: flex;
+            flex-direction: column;
+            height: 50vh;
+        }
+    }
+}
