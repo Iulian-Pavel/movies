@@ -1,0 +1,23 @@
+@use "./defaults";
+
+.movies {
+    @include defaults.displayFlex(flex, center, center, row);
+    flex-wrap: wrap;
+    gap: 1em;
+  .movie_card {
+    @include defaults.displayFlex(flex, center, center, column);
+    border: 1px solid red;
+    width: 20%;
+    .movie_card_poster {
+      border: 1px solid blue;
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border: 1px solid green;
+      }
+    }
+  }
+}
