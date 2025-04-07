@@ -18,7 +18,9 @@ export interface Movie {
     title: string,
     release_date: string,
     original_language: string,
-    poster_path: string
+    poster_path: string,
+    popularity: number,
+    overview: string
 }
 
 
