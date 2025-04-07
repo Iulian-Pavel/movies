@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchPopularMovies, Movie } from "../services/tmdb";
+import styles from "../styles/MovieCard.module.scss";
 
 function PopularMovies() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -21,18 +22,26 @@ function PopularMovies() {
     getMovies();
   }, []);
 
+  const POSTER_PATH = "https://image.tmdb.org/t/p/w500";
+
   if (loading) return <p>Loading...</p>;
 
   return (
     <div>
-      <h2>Popular Movies</h2>
-      <ul>
+      <div className={styles.movies}>
         {movies.map((movie) => (
-          <li key={movie.id}>
-            <strong>{movie.title}</strong> - {movie.release_date}
-          </li>
+          <div className={styles.movie_card}>
+            <div className={styles.movie_card_poster}>
+              <img src={`${POSTER_PATH}${movie.poster_path}`} alt="placeholder" />
+            </div>
+            <div className="movie_card_details">
+              <h1>{movie.title}</h1>
+              <p>{movie.release_date}</p>
+              <p>{movie.popularity}</p>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
