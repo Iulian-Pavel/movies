@@ -1,11 +1,14 @@
 @use "./defaults";
 
+.text_center {
+  text-align: center;
+}
+
 .movies {
-    @include defaults.displayFlex(flex, center, center, row);
-    flex-wrap: wrap;
-    gap: 1em;
+    @include defaults.displayFlex(flex, center, center, row, wrap, 1em);
+    text-align: center;
   .movie_card {
-    @include defaults.displayFlex(flex, center, center, column);
+    @include defaults.displayFlex(flex, center, center, column, 0, 0);
     border: 1px solid red;
     width: 20%;
     .movie_card_poster {

@@ -1,7 +1,7 @@
 @use './defaults';
 
 .navbar {
-    @include defaults.displayFlex(flex, space-around, center, row);
+    @include defaults.displayFlex(flex, space-around, center, row, 0, 0);
     border: 1px solid red;
     .logo {
         border: 1px solid blue;
@@ -12,7 +12,7 @@
         }
     }
     .nav_list {
-        @include defaults.displayFlex(flex, space-around, center, row);
+        @include defaults.displayFlex(flex, space-around, center, row, 0, 0);
         width: 30%;
         border: 1px solid blue;
         list-style: none;
