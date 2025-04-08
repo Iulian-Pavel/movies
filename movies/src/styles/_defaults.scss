@@ -9,11 +9,13 @@ $fontFallback: sans-serif;
 }
 
 
-@mixin displayFlex($display, $justify-content, $align-items, $flex-direction) {
+@mixin displayFlex($display, $justify-content, $align-items, $flex-direction, $flex-wrap, $gap) {
     display: $display;
     justify-content: $justify-content;
     align-items: $align-items;
     flex-direction: $flex-direction;
+    flex-wrap: $flex-wrap;
+    gap: $gap;
 }
 
 @mixin resetButton {

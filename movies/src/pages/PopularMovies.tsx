@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchPopularMovies, Movie } from "../services/tmdb";
+import MoviesComponent from "../Components/MoviesComponent";
+import styles from "../styles/MovieCard.module.scss";
 
 function PopularMovies() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -11,29 +13,31 @@ function PopularMovies() {
         const data = await fetchPopularMovies();
         setMovies(data);
         console.log(data);
-      } catch (err) {
-        console.error("Failed to fetch movies:", err);
+      } catch (error) {
+        console.log(error);
       } finally {
         setLoading(false);
       }
     };
-
     getMovies();
   }, []);
 
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h2>Popular Movies</h2>
-      <ul>
+    <>
+      <h1 className={styles.text_center}>Popular Movies Page</h1>
+      <div className={styles.movies}>
         {movies.map((movie) => (
-          <li key={movie.id}>
-            <strong>{movie.title}</strong> - {movie.release_date}
-          </li>
+          <MoviesComponent
+            title={movie.title}
+            release_date={movie.release_date}
+            popularity={movie.popularity}
+            poster_path={movie.poster_path}
+          />
         ))}
-      </ul>
-    </div>
+      </div>
+    </>
   );
 }
 
