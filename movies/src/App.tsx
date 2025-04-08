@@ -1,5 +1,5 @@
 import Navbar from "./Components/Navbar";
-import PopularMovies from "./Components/PopularMovies";
+import PopularMovies from "./pages/PopularMovies";
 
 function App() {
   return (
