@@ -26,7 +26,7 @@ function PopularMovies() {
 
   return (
     <>
-      <h1 className={styles.text_center_only}>Popular Movies Page</h1>
+      <h1 className={styles.text_center}>Popular Movies Page</h1>
       <div className={styles.movies}>
         {movies.map((movie) => (
           <MoviesComponent
