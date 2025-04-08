@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchPopularMovies, Movie } from "../services/tmdb";
-import PopularMoviesComponent from "../Components/PopularMoviesComponent";
+import MoviesComponent from "../Components/MoviesComponent";
+import styles from "../styles/MovieCard.module.scss";
 
 function PopularMovies() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -24,17 +25,19 @@ function PopularMovies() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h1>Popular Movies Page</h1>
-      {movies.map((movie) => (
-        <PopularMoviesComponent
-          title={movie.title}
-          release_date={movie.release_date}
-          popularity={movie.popularity}
-          poster_path={movie.poster_path}
-        />
-      ))}
-    </div>
+    <>
+      <h1 className={styles.text_center_only}>Popular Movies Page</h1>
+      <div className={styles.movies}>
+        {movies.map((movie) => (
+          <MoviesComponent
+            title={movie.title}
+            release_date={movie.release_date}
+            popularity={movie.popularity}
+            poster_path={movie.poster_path}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 
