@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "../styles/Navbar.module.scss";
+import { Link } from "react-router-dom";
 
 import logo from "../assets/logo.jpg";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -20,7 +21,7 @@ function Navbar() {
         </div>
         <ul className={styles.nav_list}>
           <li>
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <a href="#">Movies</a>
