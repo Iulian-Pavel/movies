@@ -1,0 +1,23 @@
+@use './defaults';
+
+.movie_container {
+    @include defaults.displayFlex(flex, space-around, center, row-reverse, wrap, 0);
+    .movie_container_details {
+        @include defaults.displayFlex(flex, space-around, space-around, column, wrap, 0);
+        padding: 2em;
+        height: 70vh;
+        width: 50%;
+    }
+}
+
+.production_companies {
+    @include defaults.displayFlex(flex, space-around, center, row, wrap, 1em);
+    .company {
+        width: 20%;
+        text-align: center;
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}

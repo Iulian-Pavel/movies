@@ -30,6 +30,7 @@ function PopularMovies() {
       <div className={styles.movies}>
         {movies.map((movie) => (
           <MoviesComponent
+            id={movie.id}
             title={movie.title}
             release_date={movie.release_date}
             popularity={movie.popularity}

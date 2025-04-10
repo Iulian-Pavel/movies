@@ -5,12 +5,37 @@
 }
 
 .movies {
-    @include defaults.displayFlex(flex, center, center, row, wrap, 1em);
-    text-align: center;
+  @include defaults.displayFlex(flex, center, center, row, wrap, 1em);
+  text-align: center;
   .movie_card {
     @include defaults.displayFlex(flex, center, center, column, 0, 0);
     border: 1px solid red;
     width: 20%;
+    .movie_card_details {
+      margin: 1em;
+      button {
+        @include defaults.resetButton;
+        border: 1px solid defaults.$backgroundColor;
+        border-radius: 0.6em 1.25em;
+        padding: 1em;
+        margin-bottom: 1em;
+        background-color: defaults.$backgroundColor;
+        transition: 300ms ease-in-out;
+        cursor: pointer;
+
+        // Button text color and background color switch places when hovered
+        a {
+          text-decoration: none;
+          color: defaults.$perfectWhite;
+        }
+        &:hover {
+          background-color: defaults.$perfectWhite;
+          a {
+            color: defaults.$backgroundColor;
+          }
+        }
+      }
+    }
     .movie_card_poster {
       border: 1px solid blue;
       width: 100%;
