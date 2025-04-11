@@ -68,7 +68,7 @@ function MovieDetails() {
               <img
                 src={`${POSTER_PATH}${company.logo_path}`}
                 alt="company logo"
-                width={"100%"}
+                width="100%"
               />
             ) : (
               <p>{company.name}</p>
