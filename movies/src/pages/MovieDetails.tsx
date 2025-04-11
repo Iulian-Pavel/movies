@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { API_KEY, POSTER_PATH } from "../constants";
 import Axios from "axios";
+import { API_KEY, POSTER_PATH } from "../constants";
 import styles from "../styles/MovieDetails.module.scss";
 
 interface ProductionCompany {
@@ -68,6 +68,7 @@ function MovieDetails() {
               <img
                 src={`${POSTER_PATH}${company.logo_path}`}
                 alt="company logo"
+                width="100%"
               />
             ) : (
               <p>{company.name}</p>
