@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useDebounce } from "../services/useDebounce";
 import styles from "../styles/SearchBar.module.scss";
@@ -9,19 +9,29 @@ type searchBarPorps = {
   searchType: "movie" | "person";
 };
 
+interface searchResultTypes {
+  id: number,
+  title: string,
+  overview: string,
+  poster_path: string,
+  profile_path: string,
+  name: string,
+  known_for_department: string
+}
+
 function SearchBar({ searchType }: searchBarPorps) {
   const [query, setQuery] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState<searchResultTypes[] | null>([]);
   const debouncedQuery = useDebounce(query, 500);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
-  const search = async (query: string): Promise<any[]> => {
+  const search = useCallback(async (query: string): Promise<searchResultTypes[]> => {
     const response = await tmdb.get(`/search/${searchType}?query=${query}`);
     return response.data.results;
-  };
+  }, [searchType]);
 
   useEffect(() => {
     if (debouncedQuery) {
@@ -33,6 +43,8 @@ function SearchBar({ searchType }: searchBarPorps) {
       setSearchResults([]);
     }
   }, [debouncedQuery]);
+
+  if(!searchResults) return <p>Loading...</p>;
 
   return (
     <>
