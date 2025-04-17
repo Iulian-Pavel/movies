@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { API_KEY, POSTER_PATH } from "../constants";
 import styles from "../styles/MovieDetails.module.scss";
 import { tmdb } from "../services/tmdb";
+import nomovieposter from "../assets/nomovieposter.jpg";
 
 interface ProductionCompany {
   id: number;
@@ -58,9 +59,16 @@ function MovieDetails() {
           <p>{movie.vote_average} out of 10</p>
           <p>{movie.runtime} minutes</p>
         </div>
-        <img src={`${POSTER_PATH}${movie.poster_path}`} alt="movie logo" />
+        <img
+          src={
+            !movie.poster_path
+              ? nomovieposter
+              : `${POSTER_PATH}${movie.poster_path}`
+          }
+          alt="movie logo"
+        />
       </div>
-      <h1 style={{textAlign: "center"}}>Brought to you by:</h1>
+      <h1 style={{ textAlign: "center" }}>Brought to you by:</h1>
       <div className={styles.production_companies}>
         {movie.production_companies.map((company) => (
           <div key={company.id} className={styles.company}>

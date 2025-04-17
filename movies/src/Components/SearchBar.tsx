@@ -4,34 +4,41 @@ import { useDebounce } from "../services/useDebounce";
 import styles from "../styles/SearchBar.module.scss";
 import { POSTER_PATH } from "../constants";
 import { tmdb } from "../services/tmdb";
+import nophoto from "../assets/noimageavailable.png";
+import nomovieposter from "../assets/nomovieposter.jpg";
 
 type searchBarPorps = {
   searchType: "movie" | "person";
 };
 
 interface searchResultTypes {
-  id: number,
-  title: string,
-  overview: string,
-  poster_path: string,
-  profile_path: string,
-  name: string,
-  known_for_department: string
+  id: number;
+  title: string;
+  overview: string;
+  poster_path: string;
+  profile_path: string;
+  name: string;
+  known_for_department: string;
 }
 
 function SearchBar({ searchType }: searchBarPorps) {
   const [query, setQuery] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<searchResultTypes[] | null>([]);
+  const [searchResults, setSearchResults] = useState<
+    searchResultTypes[] | null
+  >([]);
   const debouncedQuery = useDebounce(query, 500);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
-  const search = useCallback(async (query: string): Promise<searchResultTypes[]> => {
-    const response = await tmdb.get(`/search/${searchType}?query=${query}`);
-    return response.data.results;
-  }, [searchType]);
+  const search = useCallback(
+    async (query: string): Promise<searchResultTypes[]> => {
+      const response = await tmdb.get(`/search/${searchType}?query=${query}`);
+      return response.data.results;
+    },
+    [searchType]
+  );
 
   useEffect(() => {
     if (debouncedQuery) {
@@ -44,7 +51,7 @@ function SearchBar({ searchType }: searchBarPorps) {
     }
   }, [debouncedQuery]);
 
-  if(!searchResults) return <p>Loading...</p>;
+  if (!searchResults) return <p>Loading...</p>;
 
   return (
     <>
@@ -59,7 +66,14 @@ function SearchBar({ searchType }: searchBarPorps) {
           {searchResults.map((result) =>
             searchType === "movie" ? (
               <li className={styles.search_result} key={result.id}>
-                <img src={`${POSTER_PATH}${result.poster_path}`} width="10%" />
+                <img
+                  src={
+                    !result.poster_path
+                      ? nomovieposter
+                      : `${POSTER_PATH}${result.poster_path}`
+                  }
+                  width="10%"
+                />
                 <Link to={`/movies/${result.id}`} target="_blank">
                   {result.title}
                 </Link>
@@ -67,7 +81,15 @@ function SearchBar({ searchType }: searchBarPorps) {
               </li>
             ) : (
               <li className={styles.search_result} key={result.id}>
-                <img src={`${POSTER_PATH}${result.profile_path}`} width="10%" />
+                <img
+                  src={
+                    !result.profile_path
+                      ? nophoto
+                      : `${POSTER_PATH}${result.profile_path}`
+                  }
+                  width="10%"
+                  alt="actor picture"
+                />
                 <Link to={`/person/${result.id}`}>{result.name}</Link>
                 <p>Known for: {result.known_for_department}</p>
               </li>

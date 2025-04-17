@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { tmdb } from "../services/tmdb";
 import { API_KEY, POSTER_PATH } from "../constants";
 import styles from "../styles/PersonDetails.module.scss";
+import nophoto from "../assets/noimageavailable.png";
 
 interface PersonDetailsData {
   name: string;
@@ -42,7 +43,7 @@ function PersonDetails() {
   return (
     <>
       <div className={styles.person_details}>
-        <img src={`${POSTER_PATH}${person.profile_path}`} alt="" />
+        <img src={!person.profile_path ? nophoto : `${POSTER_PATH}${person.profile_path}`} alt="actor picture" />
         <div className={styles.person_information}>
           <h1>{person.name}</h1>
           <p>{person.known_for_department}</p>
