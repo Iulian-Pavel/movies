@@ -4,7 +4,7 @@ import { tmdb } from "../services/tmdb";
 import { API_KEY, POSTER_PATH } from "../constants";
 import styles from "../styles/PersonDetails.module.scss";
 
-interface PeopleDetailsData {
+interface PersonDetailsData {
   name: string;
   birthday: string;
   biography: string;
@@ -16,13 +16,13 @@ interface PeopleDetailsData {
 
 function PersonDetails() {
   const { personid } = useParams<{ personid: string }>();
-  const [person, setPerson] = useState<PeopleDetailsData | null>(null);
+  const [person, setPerson] = useState<PersonDetailsData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchPerson = async () => {
       try {
-        const response = await tmdb.get<PeopleDetailsData>(
+        const response = await tmdb.get<PersonDetailsData>(
           `person/${personid}?api_key=${API_KEY}`
         );
         console.log(response.data);
