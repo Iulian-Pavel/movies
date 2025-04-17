@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchPopularMovies, Movie } from "../services/tmdb";
 import MoviesComponent from "../Components/MoviesComponent";
 import styles from "../styles/MovieCard.module.scss";
-import SearchBar from "../Components/SearchBar";
+import SearchBar, { SearchTypes } from "../Components/SearchBar";
 
 function PopularMovies() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -27,7 +27,7 @@ function PopularMovies() {
 
   return (
     <>
-      <SearchBar searchType="person" />
+      <SearchBar searchType={SearchTypes.Movie} />
       <h1 className={styles.text_center}>Popular Now</h1>
       <div className={styles.movies}>
         {movies.map((movie) => (

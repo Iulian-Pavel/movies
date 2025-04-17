@@ -7,9 +7,14 @@ import { tmdb } from "../services/tmdb";
 import nophoto from "../assets/noimageavailable.png";
 import nomovieposter from "../assets/nomovieposter.jpg";
 
-type searchBarPorps = {
-  searchType: "movie" | "person";
-};
+export enum SearchTypes {
+  Movie = "movie",
+  Person = "person"
+}
+
+interface SearchBarProps {
+  searchType: SearchTypes
+}
 
 interface searchResultTypes {
   id: number;
@@ -21,7 +26,7 @@ interface searchResultTypes {
   known_for_department: string;
 }
 
-function SearchBar({ searchType }: searchBarPorps) {
+function SearchBar({ searchType }: SearchBarProps) {
   const [query, setQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<searchResultTypes[] | null>([]);
   const debouncedQuery = useDebounce(query, 500);
