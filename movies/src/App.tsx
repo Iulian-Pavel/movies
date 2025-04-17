@@ -1,8 +1,9 @@
+import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./Components/Navbar";
 import MovieDetails from "./pages/MovieDetails";
 import PopularMovies from "./pages/PopularMovies";
-import NotFound from "./Components/NotFound";
-import { Routes, Route } from "react-router-dom";
+import NotFound from "./pages/NotFound";
 import PersonDetails from "./pages/PersonDetails";
 
 function App() {
