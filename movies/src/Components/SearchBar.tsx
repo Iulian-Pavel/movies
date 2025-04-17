@@ -23,9 +23,7 @@ interface searchResultTypes {
 
 function SearchBar({ searchType }: searchBarPorps) {
   const [query, setQuery] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<
-    searchResultTypes[] | null
-  >([]);
+  const [searchResults, setSearchResults] = useState<searchResultTypes[] | null>([]);
   const debouncedQuery = useDebounce(query, 500);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
