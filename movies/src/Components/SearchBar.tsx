@@ -55,25 +55,25 @@ function SearchBar({ searchType }: searchBarPorps) {
           placeholder="Search"
           className={styles.search_bar}
         />
-        <div className={styles.search_results}>
+        <ul className={styles.search_results}>
           {searchResults.map((result) =>
             searchType === "movie" ? (
-              <div className={styles.search_result} key={result.id}>
+              <li className={styles.search_result} key={result.id}>
                 <img src={`${POSTER_PATH}${result.poster_path}`} width="10%" />
                 <Link to={`/movies/${result.id}`} target="_blank">
                   {result.title}
                 </Link>
                 <p>{result.overview}</p>
-              </div>
+              </li>
             ) : (
-              <div className={styles.search_result} key={result.id}>
+              <li className={styles.search_result} key={result.id}>
                 <img src={`${POSTER_PATH}${result.profile_path}`} width="10%" />
                 <Link to={`/person/${result.id}`}>{result.name}</Link>
                 <p>Known for: {result.known_for_department}</p>
-              </div>
+              </li>
             )
           )}
-        </div>
+        </ul>
       </div>
     </>
   );
