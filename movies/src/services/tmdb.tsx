@@ -1,11 +1,11 @@
 import Axios from "axios";
-import { API_KEY } from "../constants";
+import { API_KEY, BASE_URL } from "../constants";
 
-const BASE_URL = "https://api.themoviedb.org/3";
+
 
 
 //Create Axios instance
-const tmdb = Axios.create({
+export const tmdb = Axios.create({
     baseURL: BASE_URL,
     params: {
         api_key: API_KEY,

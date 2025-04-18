@@ -1,0 +1,53 @@
+@use './defaults';
+
+.search_container {
+  width: 100%;
+  margin-bottom: 4em;
+  text-align: center;
+  position: relative; /* Needed for absolute positioning of results */
+
+  .search_bar {
+    width: 80%;
+    height: 8vh;
+    margin: 2em auto; /* Center the search bar */
+    text-align: left; /* Align text within the input to the left */
+    padding: 0.5em; /* Add some padding inside the input */
+    border: 1px solid #ccc; /* Add a subtle border */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    font-size: 1rem;
+
+    &::placeholder {
+      color: #aaa;
+      text-align: left; /* Align placeholder text to the left */
+    }
+  }
+
+  .search_results {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: calc(100% + 2em); /* Position below the search bar + margin */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: defaults.$perfectWhite;
+    border: 1px solid green;
+    max-height: 30em; /* Set a maximum height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    z-index: 1; /* Ensure it appears above other content */
+    border-radius: 5px; /* Optional: Match search bar rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+
+    .search_result {
+      @include defaults.displayFlex(flex, flex-start, center, row, wrap, 1em); /* Adjust spacing */
+      padding: 0.5em 1em; /* Add padding to each result item */
+      border-bottom: 1px solid #000000; /* Add a separator between results */
+      text-decoration: none; /* Remove default link styling */
+      color: #333; /* Set text color */
+
+      &:last-child {
+        border-bottom: none; /* Remove border from the last item */
+      }
+    }
+  }
+}

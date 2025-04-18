@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchPopularMovies, Movie } from "../services/tmdb";
 import MoviesComponent from "../Components/MoviesComponent";
 import styles from "../styles/MovieCard.module.scss";
+import SearchBar, { SearchTypes } from "../Components/SearchBar";
 
 function PopularMovies() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -26,10 +27,12 @@ function PopularMovies() {
 
   return (
     <>
-      <h1 className={styles.text_center}>Popular Movies Page</h1>
+      <SearchBar searchType={SearchTypes.Movie} />
+      <h1 className={styles.text_center}>Popular Now</h1>
       <div className={styles.movies}>
         {movies.map((movie) => (
           <MoviesComponent
+            key={movie.id}
             id={movie.id}
             title={movie.title}
             release_date={movie.release_date}

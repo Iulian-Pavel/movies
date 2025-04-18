@@ -23,10 +23,10 @@ function Navbar() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#">Movies</a>
+            <Link to="/">Movies</Link>
           </li>
           <li>
-            <a href="#">People</a>
+            <Link to="/">People</Link>
           </li>
         </ul>
         {isOpen ? (

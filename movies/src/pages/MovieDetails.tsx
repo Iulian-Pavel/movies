@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Axios from "axios";
 import { API_KEY, POSTER_PATH } from "../constants";
 import styles from "../styles/MovieDetails.module.scss";
+import { tmdb } from "../services/tmdb";
+import nomovieposter from "../assets/nomovieposter.jpg";
 
 interface ProductionCompany {
   id: number;
@@ -25,13 +26,13 @@ interface MovieDetailsData {
 function MovieDetails() {
   const { id } = useParams<{ id: string }>();
   const [movie, setMovie] = useState<MovieDetailsData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchMovie = async () => {
       try {
-        const response = await Axios.get<MovieDetailsData>(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
+        const response = await tmdb.get<MovieDetailsData>(
+          `/movie/${id}?api_key=${API_KEY}`
         );
         setMovie(response.data);
         console.log(response.data);
@@ -58,9 +59,16 @@ function MovieDetails() {
           <p>{movie.vote_average} out of 10</p>
           <p>{movie.runtime} minutes</p>
         </div>
-        <img src={`${POSTER_PATH}${movie.poster_path}`} alt="movie logo" />
+        <img
+          src={
+            !movie.poster_path
+              ? nomovieposter
+              : `${POSTER_PATH}${movie.poster_path}`
+          }
+          alt="movie logo"
+        />
       </div>
-      <h1 style={{textAlign: "center"}}>Brought to you by:</h1>
+      <h1 style={{ textAlign: "center" }}>Brought to you by:</h1>
       <div className={styles.production_companies}>
         {movie.production_companies.map((company) => (
           <div key={company.id} className={styles.company}>

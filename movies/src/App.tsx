@@ -1,8 +1,10 @@
+import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./Components/Navbar";
 import MovieDetails from "./pages/MovieDetails";
 import PopularMovies from "./pages/PopularMovies";
-
-import { Routes, Route } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import PersonDetails from "./pages/PersonDetails";
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<PopularMovies />} />
         <Route path="/movies/:id" element={<MovieDetails />} />
+        <Route path="/person/:personid" element={<PersonDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

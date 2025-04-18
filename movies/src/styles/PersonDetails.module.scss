@@ -1,0 +1,12 @@
+@use './defaults';
+
+.person_details {
+    @include defaults.displayFlex(flex, center, center, row, wrap, 2em);
+    margin-top: 2em;
+    .person_information {
+        @include defaults.displayFlex(flex, center, flex-start, column, wrap, 1em);
+        width: 50%;
+        height: 100vh;
+        line-height: 1.5em;
+    }
+}
