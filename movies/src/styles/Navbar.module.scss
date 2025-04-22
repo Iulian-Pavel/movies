@@ -1,49 +1,63 @@
-@use './defaults';
+@use "./defaults";
 
 .navbar {
+  @include defaults.displayFlex(flex, space-around, center, row, 0, 0);
+  background: #ede8e8;
+  background: linear-gradient(
+    90deg,
+    rgba(237, 232, 232, 1) 0%,
+    rgba(87, 199, 133, 1) 50%
+  );
+  .logo {
+    border: 1px solid blue;
+    img {
+      object-fit: cover;
+      width: 4em;
+      height: auto;
+    }
+  }
+  .nav_list {
     @include defaults.displayFlex(flex, space-around, center, row, 0, 0);
-    border: 1px solid red;
-    .logo {
-        border: 1px solid blue;
-        img {
-            object-fit: cover;
-            width: 4em;
-            height: auto;
-        }
+    width: 30%;
+    list-style: none;
+    a {
+      display: block;
+      text-decoration: none;
+      border: 1px solid green;
+      color: defaults.$perfectWhite;
+      border-radius: 10px 20px;
+      padding: 0.8em;
+      transition: 0.3s ease-in-out;
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 1px 2px 20px green;
+        background-color: defaults.$backgroundColor;
+      }
     }
-    .nav_list {
-        @include defaults.displayFlex(flex, space-around, center, row, 0, 0);
-        width: 30%;
-        border: 1px solid blue;
-        list-style: none;
-        a {
-            text-decoration: none;
-            color: #000;
-        }
-    }
-    .navmenu_icon {
-        display: none;
-    }
+  }
+  .navmenu_icon {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .navbar {
-        .nav_list{
-            display: none;
-        }
-        .navmenu_icon {
-            display: block;
-            width: 2em;
-            height: auto;
-        }
+  .navbar {
+    .nav_list {
+      display: none;
     }
-    .navbar_responsive {
-        flex-direction: column;
-        height: 100vh;
-        .nav_list {
-            display: flex;
-            flex-direction: column;
-            height: 50vh;
-        }
+    .navmenu_icon {
+      display: block;
+      width: 2em;
+      height: auto;
     }
+  }
+  .navbar_responsive {
+    flex-direction: column;
+    height: 100vh;
+    .nav_list {
+      display: flex;
+      flex-direction: column;
+      height: 50vh;
+    }
+  }
 }
