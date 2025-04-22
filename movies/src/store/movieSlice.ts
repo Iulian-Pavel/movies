@@ -13,11 +13,11 @@ const initialState: MoviesState = {
     error: null
 };
 
-export const fetchPopularMoviesThunk = createAsyncThunk(
+export const fetchPopularMoviesThunk = createAsyncThunk<Movie[]>(
     '/movies/popular',
     async () => {
         const movies = await fetchPopularMovies();
-        return movies as Movie[];
+        return movies;
     }
 );
 
@@ -28,7 +28,7 @@ const movieSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(fetchPopularMoviesThunk.pending, (state) => {
-            state.loading = true,
+            state.loading = true;
             state.error = null;
         })
         .addCase(fetchPopularMoviesThunk.fulfilled, (state, action) => {
