@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPopularMoviesThunk } from "../store/movieSlice";
-import { RootState, AppDispatch } from "../store"
+import { AppDispatch } from "../store";
 import MoviesComponent from "../Components/MoviesComponent";
 import styles from "../styles/MovieCard.module.scss";
 import SearchBar, { SearchTypes } from "../Components/SearchBar";
+import { selectMoviesLoading, selectPopularMovies } from "../selectors/movieSelectors";
 
 function PopularMovies() {
-
   const dispatch = useDispatch<AppDispatch>();
-  const movies = useSelector((state: RootState) => state.movies.popular);
-  const loading = useSelector((state: RootState) => state.movies.loading);
+  const movies = useSelector(selectPopularMovies);
+  const loading = useSelector(selectMoviesLoading);
 
   useEffect(() => {
     dispatch(fetchPopularMoviesThunk());
