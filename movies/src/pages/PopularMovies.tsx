@@ -1,27 +1,20 @@
-import { useEffect, useState } from "react";
-import { fetchPopularMovies, Movie } from "../services/tmdb";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPopularMoviesThunk } from "../store/movieSlice";
+import { AppDispatch } from "../store";
 import MoviesComponent from "../Components/MoviesComponent";
 import styles from "../styles/MovieCard.module.scss";
 import SearchBar, { SearchTypes } from "../Components/SearchBar";
+import { selectMoviesLoading, selectPopularMovies } from "../selectors/movieSelectors";
 
 function PopularMovies() {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch<AppDispatch>();
+  const movies = useSelector(selectPopularMovies);
+  const loading = useSelector(selectMoviesLoading);
 
   useEffect(() => {
-    const getMovies = async () => {
-      try {
-        const data = await fetchPopularMovies();
-        setMovies(data);
-        console.log(data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getMovies();
-  }, []);
+    dispatch(fetchPopularMoviesThunk());
+  }, [dispatch]);
 
   if (loading) return <p>Loading...</p>;
 
