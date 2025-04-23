@@ -32,7 +32,32 @@ export interface MovieResponse {
     total_results: number
 }
 
+export interface PeopleResponse {
+    page: number,
+    results: Person[],
+    total_pages: number,
+    total_results: number,
+}
+
+export interface Person {
+    id: number,
+    name: string,
+    known_for_department: string,
+    profile_path: string,
+    known_for: Known_For[]
+}
+
+export interface Known_For {
+    title: string
+}
+
 export const fetchPopularMovies = async (): Promise<Movie[]> => {
     const response = await tmdb.get("/movie/popular");
+    return response.data.results;
+}
+
+export const fetchPeople = async (): Promise<Person[]> => {
+    const response = await tmdb.get("/person/popular");
+    console.log(response.data.results);
     return response.data.results;
 }
