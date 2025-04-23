@@ -26,7 +26,7 @@ function Navbar() {
             <Link to="/">Movies</Link>
           </li>
           <li>
-            <Link to="/">People</Link>
+            <Link to="/people">People</Link>
           </li>
         </ul>
         {isOpen ? (
