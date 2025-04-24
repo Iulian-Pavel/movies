@@ -1,15 +1,21 @@
+import { memo } from "react";
 import { POSTER_PATH } from "../constants";
 import { Link } from "react-router-dom";
 import styles from "../styles/PersonComponent.module.scss";
-import { Person } from "../services/tmdb";
+import { Person } from "../services/tmdb.type.ts";
 
-function PersonComponent({
-  id,
-  name,
-  known_for_department,
-  profile_path,
-  known_for,
-}: Person) {
+type Props = {
+  person: Person;
+};
+
+function PersonComponent({ person }: Props) {
+  const {
+    id = 0,
+    name = "Unknown",
+    known_for_department = "N/A",
+    profile_path = "",
+    known_for = [],
+  } = person;
   return (
     <div className={styles.person_info}>
       <img
@@ -26,4 +32,4 @@ function PersonComponent({
   );
 }
 
-export default PersonComponent;
+export default memo(PersonComponent);

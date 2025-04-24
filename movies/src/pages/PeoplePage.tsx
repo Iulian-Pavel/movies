@@ -8,7 +8,7 @@ import { fetchPeopleThunk } from "../store/personSlice";
 import { AppDispatch } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import PersonComponent from "../Components/PersonComponent";
-import styles from '../styles/PersonComponent.module.scss'
+import styles from "../styles/PersonComponent.module.scss";
 
 function PeoplePage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,18 +24,11 @@ function PeoplePage() {
   if (!people) return <p>{error}</p>;
   return (
     <>
-    <div className={styles.person_container}>
+      <div className={styles.person_container}>
         {people.map((person) => (
-          <PersonComponent 
-          key={person.id}
-            id={person.id}
-            profile_path={person.profile_path}
-            name={person.name}
-            known_for_department={person.known_for_department}
-            known_for={person.known_for}
-          />
+          <PersonComponent key={person.id} person={person} />
         ))}
-        </div>
+      </div>
     </>
   );
 }
