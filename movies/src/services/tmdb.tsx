@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { Movie, Person } from "./tmdb.type";
+import { Movie, Person } from "../types/global.type";
 import { API_KEY, BASE_URL } from "../constants";
 
 //Create Axios instance
