@@ -4,7 +4,8 @@ import { fetchPopularMoviesThunk } from "../store/movieSlice";
 import { AppDispatch } from "../store";
 import MoviesComponent from "../Components/MoviesComponent";
 import styles from "../styles/MovieCard.module.scss";
-import SearchBar, { SearchTypes } from "../Components/SearchBar";
+import SearchBar from "../Components/SearchBar";
+import { SearchTypes } from "../types/SearchBar.type";
 import {
   selectMoviesLoading,
   selectPopularMovies,
