@@ -1,0 +1,12 @@
+@use './defaults';
+
+.person_container {
+    @include defaults.displayFlex(flex, center, center, row, wrap, 1em);
+    border: 1px solid red;
+    margin-top: 1em;
+    .person_info {
+        @include defaults.displayFlex(flex, center, center, column, wrap, 2em);
+        padding: 1em;
+        border: 1px solid blue;
+    }
+}
