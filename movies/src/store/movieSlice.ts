@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchPopularMovies } from "../services/tmdb";
-import { Movie } from "../services/tmdb.type";
+import { Movie } from "../types/global.type";
 
 interface MoviesState {
   popular: Movie[];

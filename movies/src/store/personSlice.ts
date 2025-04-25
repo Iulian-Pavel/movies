@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchPeople } from "../services/tmdb";
-import { Person } from "../services/tmdb.type";
+import { Person } from "../types/global.type";
 
 interface PeopleState {
   people: Person[];
