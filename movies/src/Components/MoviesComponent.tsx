@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { POSTER_PATH } from "../constants";
 import styles from "../styles/MovieCard.module.scss";
-import { Movie } from "../services/tmdb.type";
+import { Movie } from "../types/global.type.ts";
 
 type Props = {
   movie: Movie;
@@ -12,7 +12,7 @@ function MoviesComponent({ movie }: Props) {
     id = 0,
     title = "Unknown",
     release_date = "Unreleased",
-    poster_path = "",
+    poster_path = "../assets/nomovieposter.jpg",
     popularity = "",
   } = movie;
 

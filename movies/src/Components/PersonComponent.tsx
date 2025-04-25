@@ -2,7 +2,7 @@ import { memo } from "react";
 import { POSTER_PATH } from "../constants";
 import { Link } from "react-router-dom";
 import styles from "../styles/PersonComponent.module.scss";
-import { Person } from "../services/tmdb.type.ts";
+import { Person } from "../types/global.type.ts";
 
 type Props = {
   person: Person;
@@ -13,7 +13,7 @@ function PersonComponent({ person }: Props) {
     id = 0,
     name = "Unknown",
     known_for_department = "N/A",
-    profile_path = "",
+    profile_path = "../assets/noimageavailable.png",
     known_for = [],
   } = person;
   return (
