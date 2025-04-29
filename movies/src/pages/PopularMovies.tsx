@@ -9,18 +9,22 @@ import { SearchTypes } from "../types/SearchBar.type";
 import {
   selectMoviesLoading,
   selectPopularMovies,
+  selectMoviesError,
 } from "../selectors/movieSelectors";
 
 function PopularMovies() {
   const dispatch = useDispatch<AppDispatch>();
   const movies = useSelector(selectPopularMovies);
   const loading = useSelector(selectMoviesLoading);
+  const error = useSelector(selectMoviesError);
 
   useEffect(() => {
     dispatch(fetchPopularMoviesThunk());
   }, [dispatch]);
 
   if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
 
   return (
     <>

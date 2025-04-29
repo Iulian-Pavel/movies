@@ -23,7 +23,7 @@ function PeoplePage() {
   }, [dispatch]);
 
   if (loading) return <p>Loading...</p>;
-  if (!people) return <p>{error}</p>;
+  if (error) return <p>{error}</p>;
   return (
     <>
     <SearchBar searchType={SearchTypes.Person} />
