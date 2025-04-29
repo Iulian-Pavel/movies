@@ -21,8 +21,8 @@ export const fetchPopularMoviesThunk = createAsyncThunk<Movie[]>(
       const movies = await fetchPopularMovies();
       return movies;
     } catch (error: any) {
-      console.log(error.message);
-      return error.message;
+      console.log("error requesting movie",error.message);
+      throw error;
     }
   }
 );

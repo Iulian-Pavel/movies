@@ -23,8 +23,8 @@ export const fetchPeopleThunk = createAsyncThunk<Person[]>(
       const people = await fetchPeople();
       return people;
     } catch (error: any) {
-      console.log(error.message);
-      return error.message;
+      console.log("people error",error.message);
+      throw error;
     }
   }
 );
