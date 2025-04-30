@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { POSTER_PATH } from "../constants";
 import styles from "../styles/MovieCard.module.scss";
 import { Movie } from "../types/global.type.ts";
+import { memo } from "react";
 
 type Props = {
   movie: Movie;
@@ -37,4 +38,4 @@ function MoviesComponent({ movie }: Props) {
   );
 }
 
-export default MoviesComponent;
+export default memo(MoviesComponent);
