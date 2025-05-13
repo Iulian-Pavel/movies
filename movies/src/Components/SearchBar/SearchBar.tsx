@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { useDebounce } from "../services/useDebounce";
-import styles from "../styles/SearchBar.module.scss";
-import { POSTER_PATH } from "../constants";
-import { tmdb } from "../services/tmdb";
-import nophoto from "../assets/noimageavailable.png";
-import nomovieposter from "../assets/nomovieposter.jpg";
-import { searchResultTypes, SearchBarProps } from "../types/SearchBar.type";
+import { useDebounce } from "../../services/useDebounce";
+import styles from "../../styles/SearchBar.module.scss"
+import { POSTER_PATH } from "../../constants";
+import { tmdb } from "../../services/tmdb";
+import nophoto from "../../assets/noimageavailable.png";
+import nomovieposter from "../../assets/nomovieposter.jpg";
+import { searchResultTypes, SearchBarProps } from "../../types/SearchBar.type";
 import { memo } from "react";
 
 function SearchBar({ searchType }: SearchBarProps) {

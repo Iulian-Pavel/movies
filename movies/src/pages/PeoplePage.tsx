@@ -9,7 +9,7 @@ import { AppDispatch } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 import PersonComponent from "../Components/PersonComponent";
 import styles from "../styles/PersonComponent.module.scss";
-import SearchBar from "../Components/SearchBar";
+import SearchBar from "../Components/SearchBar/SearchBar";
 import { SearchTypes } from "../types/SearchBar.type";
 
 function PeoplePage() {
